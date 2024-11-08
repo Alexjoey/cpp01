@@ -13,12 +13,12 @@
 #include <iostream>
 #include <fstream>
 
+//replaces str2 for str1
 void	replaceAndWriteStrings(std::ofstream &ofile, std::string str1, std::string str2, std::string buff)
 {
 	size_t	cPos;
 	size_t	stringPos;
 
-	(void) ofile;
 	cPos = 0;
 	stringPos = buff.find(str1);
 	while (stringPos != buff.npos)
@@ -33,7 +33,7 @@ void	replaceAndWriteStrings(std::ofstream &ofile, std::string str1, std::string 
 int	main(int argc, char **argv)
 {
 	std::ifstream	inFile;
-	std::ofstream	oFile;
+	std::ofstream	outFile;
 	std::string		str1;
 	std::string		str2;
 	std::string		fileName;
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	if (argc != 4)
 	{
 		std::cout << "Invalid num of arguments, use ./replace file string1 string2" << std::endl;
-		return (0);
+		return (1);
 	}
 	fileName = argv[1];
 	str1 = argv[2];
@@ -55,15 +55,15 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	fileReplaceName = fileName + ".replace";
-	oFile.open(fileReplaceName.c_str());
-	if (!inFile.is_open())
+	outFile.open(fileReplaceName.c_str());
+	if (!outFile.is_open())
 	{
 		std::cout << "Unable to open replace file: " << fileReplaceName << std::endl;
 		inFile.close();
 		return (1);
 	}
 	while (getline(inFile, buff))
-		replaceAndWriteStrings(oFile, str1, str2, buff + '\n');
+		replaceAndWriteStrings(outFile, str1, str2, buff + '\n');
 	inFile.close();
-	oFile.close();
+	outFile.close();
 }
