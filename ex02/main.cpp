@@ -16,7 +16,7 @@ int	main(void)
 {
 	std::string string = "HI THIS IS BRAIN";
 	std::string *stringPTR = &string;
-	std::string& stringREF = string;
+	std::string &stringREF = string;
 
 	std::cout << "Address of string var: " << &string << std::endl;
 	std::cout << "Address held by string ptr: " << stringPTR << std::endl;
