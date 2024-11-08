@@ -16,12 +16,11 @@ int	main(void)
 {
 	Zombie zombie1;
 	Zombie ben("ben");
-	int	i;
 
 	zombie1.announce();
 	ben.announce();
 
-	i = 3;
+	int	i = 3;
 	Zombie	*horde;
 	horde = zombieHorde(i, "Harry");
 	for (int j = 0; j < i; j++)
